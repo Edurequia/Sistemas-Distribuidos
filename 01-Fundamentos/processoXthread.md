@@ -40,12 +40,15 @@ PROCESSOS X THREADS
 
 
 
--> PROCESSOS EM SISTEMAS DISTRIBUIDOS
+
+PROCESSOS EM SISTEMAS DISTRIBUIDOS
 
 Um processo em um sistema distribuído é uma instância de um programa que roda em uma máquina independente. Esses processos cooperam entre si via rede, formando um sistema distribuído funcional. A comunicação entre eles se dá por meio de protocolos como: RCP, HTTP/REST, Mensageria.
-Exemplo de uso: microserviços.
 
--> THREADS EM SISTEMAS DISTRIBUIDOS
+- Exemplo de uso: microserviços.
+
+THREADS EM SISTEMAS DISTRIBUIDOS
 
 Uma thread é uma unidade de execução leve dentro de um processo. Elas compartilham os recursos do processo (como memória) e são usadas para paralelismo local, ou seja, dentro de uma mesma máquina.
-Exemplo de uso: Servidor de banco de dados, servidor web.
+
+- Exemplo de uso: Servidor de banco de dados, servidor web.
