@@ -1,0 +1,27 @@
+Comunicação bloqueante: quando um processo envia/recebe dados e precisa aguardar a conclusão da operação antes executar outras tarefas
+
+Sincronismo: garantir a consistência dos dados, ter um controle para que não tenha resultados diferentes, perda de dados ou falhas.
+
+Concorrência: concomitante != paralelo, é a execução quase simultânea de múltiplas tarefas visando melhorar o desempenho e eficiência do sistema.
+
+Concorrência: Ocorre quando duas ou mais tarefas progridem independentemente. 
+
+Condições de corrida:  Duas threads acessam a mesma variável ao mesmo tempo, podendo causar inconsistências em transações.
+
+Deadlock: Duas ou mais threads "paradas" esperando recursos que estão sendo mantidos por outra thread.
+
+Seção crítica: Uma seção de código que acessa um recurso compartilhado.
+
+Semaforo: usado para controlar o acesso a um conjunto de recursos limitados.
+
+
+Relógio Físico: é um dispositivo que mede o tempo real. Em computadores, é um relógio interno, que gera tiques em intervalos regulares. 
+
+Relógio Lógico: não mede o tempo real, mas sim o tempo relativo dos eventos. Ele é usado para para determinar se um evento aconteceu "antes", "depois" ou "concorrentemente" a outro.
+
+Exclusão Mútua: requisito que garante que apenas um processo ou thread por vez tenha acesso a um recurso compartilhado ou execute uma seção crítica de código, evitando race conditions.
+
+Eleição: Um algoritmo de eleição é usado em sistemas distribuídos para escolher um único processo para atuar como coordenador ou líder.
+Esse processo lider é responsável para gerenciar uma tarefa específica, como exclusão mútua.
+
+
