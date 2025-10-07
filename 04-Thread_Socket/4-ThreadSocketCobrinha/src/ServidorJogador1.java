@@ -44,6 +44,17 @@ public class ServidorJogador1 extends javax.swing.JFrame {
                         else if (c.tipo == Componente.FRUTA) {
                             jButtonFruta.setBounds(c.x, c.y, c.largura, c.altura);
                         }
+                        else if (c.tipo == Componente.PLACAR) { 
+                            if (c.idJogador == 2) { 
+                                txtPlacarJogador2.setText(String.valueOf(c.pontuacao));
+                            }
+                            try {
+                                saida.writeObject(c);
+                                saida.flush();
+                            } catch (Exception retransmitE) {
+                                System.out.println("Erro ao retransmitir o placar para o Cliente: " + retransmitE.getMessage());
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Erro: " + e.getMessage());
@@ -217,7 +228,7 @@ public class ServidorJogador1 extends javax.swing.JFrame {
         }
         if (Movimenta.pegou(jButtonJogador1, jButtonFruta)) {
             placarJogador1++;
-            txtPlacarJogador2.setText(String.valueOf(placarJogador1));
+            txtPlacarJogador1.setText(String.valueOf(placarJogador1));
             Movimenta.posicionaAleatorio(jButtonFruta,
                     jPanelJogador1.getBounds().width,
                     jPanelJogador1.getBounds().height);
@@ -228,6 +239,8 @@ public class ServidorJogador1 extends javax.swing.JFrame {
                         jButtonFruta.getBounds().width,
                         jButtonFruta.getBounds().height);
                 c.tipo = Componente.FRUTA;
+                Componente cPlacar = new Componente(Componente.PLACAR, placarJogador1, 1);
+                saida.writeObject(cPlacar);
                 saida.writeObject(c);
             } catch (Exception e) {
                 System.out.println("Erro ao enviar a fruta");

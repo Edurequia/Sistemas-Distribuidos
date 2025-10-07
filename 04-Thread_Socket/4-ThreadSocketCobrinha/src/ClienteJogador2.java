@@ -35,18 +35,19 @@ public class ClienteJogador2 extends javax.swing.JFrame {
 
                     while (true) {
                         c = (Componente) entrada.readObject();
-                        //se for jogador
+
                         if (c.tipo == Componente.JOGADOR) {
                             jButtonJogador1.setBounds(c.x, c.y, c.largura, c.altura);
-                        } //se for fruta
+                        } 
                         else if (c.tipo == Componente.FRUTA) {
+                            // Move a fruta
                             jButtonFruta.setBounds(c.x, c.y, c.largura, c.altura);
-                        } 
+                        }
                         else if (c.tipo == Componente.PLACAR) { 
-                        if (c.idJogador == 1) {
-                            txtPlacarJogador1.setText(String.valueOf(c.pontuacao)); 
-                        } 
-                     }
+                            if (c.idJogador == 1) {
+                                txtPlacarJogador1.setText(String.valueOf(c.pontuacao)); 
+                            } 
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Erro: " + e.getMessage());
@@ -100,19 +101,18 @@ public class ClienteJogador2 extends javax.swing.JFrame {
         jPanelJogador2.setLayout(jPanelJogador2Layout);
         jPanelJogador2Layout.setHorizontalGroup(
             jPanelJogador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJogador2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonJogador2)
+                .addGap(17, 17, 17))
             .addGroup(jPanelJogador2Layout.createSequentialGroup()
                 .addGroup(jPanelJogador2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJogador2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonJogador2))
                     .addGroup(jPanelJogador2Layout.createSequentialGroup()
                         .addGap(163, 163, 163)
-                        .addComponent(jButtonFruta)
-                        .addGap(0, 269, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanelJogador2Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jButtonJogador1)
+                        .addComponent(jButtonFruta))
+                    .addGroup(jPanelJogador2Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jButtonJogador1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelJogador2Layout.setVerticalGroup(
@@ -122,9 +122,9 @@ public class ClienteJogador2 extends javax.swing.JFrame {
                 .addComponent(jButtonJogador1)
                 .addGap(64, 64, 64)
                 .addComponent(jButtonFruta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonJogador2)
-                .addContainerGap())
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jLabel1.setText("IP:");
@@ -189,7 +189,7 @@ public class ClienteJogador2 extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel3)
                                 .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 211, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -253,9 +253,10 @@ public class ClienteJogador2 extends javax.swing.JFrame {
                         jButtonFruta.getBounds().width,
                         jButtonFruta.getBounds().height);
                 c.tipo = Componente.FRUTA;
-                saida.writeObject(c);
                 
                 Componente cPlacar = new Componente(Componente.PLACAR, placarJogador2, ID_JOGADOR);
+                saida.writeObject(cPlacar);
+                saida.writeObject(c);
             } catch (Exception e) {
                 System.out.println("Erro ao enviar a fruta");
             }
