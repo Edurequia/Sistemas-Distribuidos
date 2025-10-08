@@ -119,7 +119,7 @@ public class ServidorJogador1 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonFruta)
                     .addComponent(jButtonJogador1))
@@ -156,24 +156,26 @@ public class ServidorJogador1 extends javax.swing.JFrame {
             .addGroup(jPanelJogador1Layout.createSequentialGroup()
                 .addGroup(jPanelJogador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelJogador1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelJogador1Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(txtPlacarJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPlacarJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelJogador1Layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(jLabel3)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addGap(194, 194, 194)
+                        .addGroup(jPanelJogador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelJogador1Layout.createSequentialGroup()
+                                .addComponent(txtPlacarJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPlacarJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelJogador1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel3)))))
+                .addContainerGap())
         );
         jPanelJogador1Layout.setVerticalGroup(
             jPanelJogador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJogador1Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelJogador1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +183,8 @@ public class ServidorJogador1 extends javax.swing.JFrame {
                         .addComponent(txtPlacarJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4))
                     .addComponent(txtPlacarJogador1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -204,6 +206,7 @@ public class ServidorJogador1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private int placarJogador1 = 0;
+    private int placarJogador2 = 0;
     private final int ID_JOGADOR = 1;
     private void jButtonFrutaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonFrutaKeyPressed
         // TODO add your handling code here:
@@ -229,6 +232,13 @@ public class ServidorJogador1 extends javax.swing.JFrame {
         if (Movimenta.pegou(jButtonJogador1, jButtonFruta)) {
             placarJogador1++;
             txtPlacarJogador1.setText(String.valueOf(placarJogador1));
+            
+             if (placarJogador1 >= 6) {
+                System.out.println("JOGADOR 1 VENCEU! REINICIANDO...");
+                reiniciarJogo();
+                return;
+             }
+            
             Movimenta.posicionaAleatorio(jButtonFruta,
                     jPanelJogador1.getBounds().width,
                     jPanelJogador1.getBounds().height);
@@ -268,7 +278,26 @@ public class ServidorJogador1 extends javax.swing.JFrame {
     private void txtPlacarJogador2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlacarJogador2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPlacarJogador2ActionPerformed
+public void reiniciarJogo() {
+    placarJogador1 = 0;
+    placarJogador2 = 0;
 
+    txtPlacarJogador1.setText("0");
+    txtPlacarJogador2.setText("0");
+    
+
+    Movimenta.posicionaAleatorio(jButtonFruta, 
+                                 jPanelJogador1.getBounds().width, 
+                                 jPanelJogador1.getBounds().height); 
+    
+    try {
+        saida.flush();
+        Componente cReiniciar = new Componente(Componente.REINICIO, 0, 0); 
+        saida.writeObject(cReiniciar);
+    } catch (Exception e) {
+        System.out.println("Erro ao enviar comando de reinício.");
+    }
+}
     /**
      * @param args the command line arguments
      */

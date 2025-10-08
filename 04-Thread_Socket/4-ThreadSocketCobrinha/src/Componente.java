@@ -4,7 +4,7 @@ import java.io.Serializable;
  * @author alexandrezamberlan
  */
 public class Componente implements Serializable {
-    public static final int FRUTA = 1, JOGADOR = 2, PLACAR = 3;
+    public static final int FRUTA = 1, JOGADOR = 2, PLACAR = 3, REINICIO = 4;
     public int x;
     public int y;
     public int largura;
